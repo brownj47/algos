@@ -10,24 +10,24 @@ class ListNode:
 
 
 class Solution:
-    def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
-        holder = ListNode()
-        current = holder
+    def mergeTwoLists(self, list1, list2):
+        dummy = ListNode()
+        current = dummy
         #  go through list 1 and list 2, put the lower one on the end of holder
         while list1 and list2:
             if list1.val <= list2.val:
                 current.next = list1
                 current = current.next
                 list1 = list1.next
-                continue
-            if list2.val < list1.val:
+
+            else:
                 current.next = list2
                 current = current.next
                 list2 = list2.next
-                continue
+
         if list1:
             current.next = list1
         if list2:
             current.next = list2
 
-        return holder.next
+        return dummy.next
